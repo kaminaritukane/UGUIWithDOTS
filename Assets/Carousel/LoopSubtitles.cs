@@ -19,25 +19,33 @@ public class LoopSubtitles : MonoBehaviour
     public void UpdateSubtitileContent(string data)
     {
         text.GetComponent<Text>().text = data;
+        StartCoroutine(ResetTextWidth());
+    }
+
+    IEnumerator ResetTextWidth()
+    {
         contentSizeFitter.enabled = true;
+        yield return null;
+        contentSizeFitter.enabled = false;
+        yield return null;
         Initialize();
     }
 
     private void Initialize()
     {
         //With ContentSizeFitter component, can not get the correct with of the text
-        contentSizeFitter.enabled = false;
         textWidth = text.sizeDelta.x;
 
+        //If the text width is short, then we don't need loop.
         if (textWidth > backgroundWidth)
         {
             if (text2 != null)
                 Destroy(text2.gameObject);
             text2 = Instantiate(text.gameObject, background.transform).GetComponent<RectTransform>();
             text2.anchoredPosition = new Vector2(background.sizeDelta.x, textPosY);
-        }
 
-        StartCoroutine(MoveText1());
+            StartCoroutine(MoveText1());
+        }
     }
 
     private void Start()
@@ -45,7 +53,7 @@ public class LoopSubtitles : MonoBehaviour
         contentSizeFitter = text.GetComponent<ContentSizeFitter>();
         backgroundWidth = background.sizeDelta.x;
         textPosY = text.anchoredPosition.y;
-        Initialize();
+        StartCoroutine(ResetTextWidth());
     }
 
     private IEnumerator MoveText1()
@@ -69,7 +77,7 @@ public class LoopSubtitles : MonoBehaviour
                 showText2 = true;
                 StartCoroutine(MoveText2());
             }
-            yield return 0;
+            yield return null;
         }
         yield return null;
     }
@@ -95,7 +103,7 @@ public class LoopSubtitles : MonoBehaviour
                 showText2 = false;
                 StartCoroutine(MoveText1());
             }
-            yield return 0;
+            yield return null;
         }
         yield return null;
     }
