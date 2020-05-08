@@ -8,6 +8,8 @@ namespace INF.GamePlay
         {
             base.OnCreate();
 
+            AddSystemToUpdateList(World.CreateSystem<InputSystem>());
+            AddSystemToUpdateList(World.CreateSystem<UnitActionSystem>());
             AddSystemToUpdateList(World.CreateSystem<DockingSystem>());
         }
     }
