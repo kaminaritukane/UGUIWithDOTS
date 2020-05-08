@@ -12,11 +12,12 @@ public class WindowsAnim : MonoBehaviour
 
     [SerializeField] private GameObject window;
     private Animator animator;
-    private float transitTime = 0.2f;
+    [SerializeField] private float transitTime = 0.35f;
 
     void Awake()
     {
         animator = window.GetComponent<Animator>();
+        animator.SetFloat("animSpeed", 1f / transitTime);
     }
 
     private void OnEnable()
@@ -35,6 +36,9 @@ public class WindowsAnim : MonoBehaviour
     private bool isShow = true;
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Space))
+            ShowWindow();
+
         if (Input.GetMouseButtonDown(0))
         {
             isShow = !isShow;
