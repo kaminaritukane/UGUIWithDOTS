@@ -340,7 +340,7 @@ PrefabInstance:
     - target: {fileID: 8964539416163873998, guid: 23ed2597164b5e6488b540a5958acbaa,
         type: 3}
       propertyPath: m_Name
-      value: Window Root (1)
+      value: Window Root
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 23ed2597164b5e6488b540a5958acbaa, type: 3}
@@ -356,6 +356,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 376421172}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &376421175 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8964539416163873996, guid: 23ed2597164b5e6488b540a5958acbaa,
+    type: 3}
+  m_PrefabInstance: {fileID: 376421172}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e33174a4ad30d344eb45c472f6f85261, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &442053081
 GameObject:
   m_ObjectHideFlags: 0
@@ -884,8 +896,9 @@ GameObject:
   - component: {fileID: 1561145031}
   - component: {fileID: 1561145030}
   - component: {fileID: 1561145029}
+  - component: {fileID: 1561145032}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Close Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -991,6 +1004,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1561145027}
   m_CullTransparentMesh: 0
+--- !u!114 &1561145032
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1561145027}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34f09994a3bf14d43ac8c8a0f0b75b1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  windowsManager: {fileID: 376421175}
 --- !u!1 &1765868532
 GameObject:
   m_ObjectHideFlags: 0

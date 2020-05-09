@@ -1,8 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class WindowsAnim : MonoBehaviour
+public class WindowsManager : MonoBehaviour
 {
     public delegate void ShowWindowDelegate();
     public delegate void HideWindowDelegate();
@@ -33,17 +31,10 @@ public class WindowsAnim : MonoBehaviour
     }
 
     //For Test Animation
-    private bool isShow = true;
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
             ShowWindow();
-
-        if (Input.GetMouseButtonDown(0))
-        {
-            isShow = !isShow;
-            animator.SetBool("isShow", isShow);
-        }
     }
         
     public void ShowWindow()
