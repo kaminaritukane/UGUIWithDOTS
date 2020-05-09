@@ -6,11 +6,14 @@ namespace INF.UI
     [UpdateAfter(typeof(GamePlaySystemGroup))]
     public class UISystemGroup : ComponentSystemGroup
     {
+        public DockingUISystem DockingUISys { get; private set; }
+
         protected override void OnCreate()
         {
             base.OnCreate();
 
-            AddSystemToUpdateList(World.CreateSystem<DockingUISystem>());
+            DockingUISys = World.CreateSystem<DockingUISystem>();
+            AddSystemToUpdateList(DockingUISys);
         }
     }
 }
