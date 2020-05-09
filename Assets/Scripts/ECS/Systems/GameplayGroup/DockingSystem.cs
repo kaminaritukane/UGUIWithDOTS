@@ -1,7 +1,9 @@
 ﻿using System;
+using Unity.Collections;
 using Unity.Entities;
 using Unity.Mathematics;
 using Unity.Transforms;
+using UnityEngine;
 
 namespace INF.GamePlay
 {
@@ -13,7 +15,27 @@ namespace INF.GamePlay
         private const float DOCKING_DISTANCE_CHECK_FREQUANCY = 1f;
         private float m_updateInterval = 1f / DOCKING_DISTANCE_CHECK_FREQUANCY;
         private float m_updateCD = 0f;
-        private bool m_wasInRange = false;
+
+        private EntityQuery spaceStationQuery;
+
+        private EndSimulationEntityCommandBufferSystem _ecb;
+
+        private struct DockingStationInfo
+        {
+            public float3 position;
+            public float range;
+        }
+
+        protected override void OnCreate()
+        {
+            base.OnCreate();
+
+            _ecb = World.GetOrCreateSystem<EndSimulationEntityCommandBufferSystem>();
+
+            spaceStationQuery = GetEntityQuery(
+                ComponentType.ReadOnly<SpaceStation>(),
+                ComponentType.ReadOnly<Translation>());
+        }
 
         protected override void OnUpdate()
         {
@@ -22,47 +44,65 @@ namespace INF.GamePlay
             {
                 m_updateCD += m_updateInterval;
 
-                var isInRange = CheckInDockingRange();
-                if ( isInRange != m_wasInRange )
-                {
-                    m_wasInRange = isInRange;
-
-                    SendInRangeChangedEvent();
-                }
+                CheckInDockingRange();
             }
 
             m_updateCD -= Time.DeltaTime;
         }
 
-        private void SendInRangeChangedEvent()
+        private void CheckInDockingRange()
         {
-            
-        }
+            var count = spaceStationQuery.CalculateEntityCount();
+            var stationPosArray = new NativeArray<DockingStationInfo>(count, Allocator.TempJob);
 
-        private bool CheckInDockingRange()
-        {
-            bool isInRange = false;
+            var ecb = _ecb.CreateCommandBuffer().ToConcurrent();
 
-            float3 playerPos = float3.zero;
+            // Get all station's position
+            Entities
+                .WithStoreEntityQueryInField(ref spaceStationQuery)
+                .ForEach((int entityInQueryIndex,
+                in SpaceStation station,
+                in Translation stationTrans) =>
+            {
+                stationPosArray[entityInQueryIndex] = new DockingStationInfo { 
+                    position = stationTrans.Value,
+                    range = station.Range
+                };
+            })
+            .Schedule();
 
-            Entities.ForEach((in Player player, 
+            Entities.ForEach((
+                Entity entity,
+                int entityInQueryIndex,
+                ref Docking docking,
+                in Player player,
                 in Authority auth,
                 in Translation trans) =>
             {
-                playerPos = trans.Value;
-            }).Run();
+                var playerPos = trans.Value;
 
-            // Should be only one Docking station around?
-            Entities.ForEach((in SpaceStation station,
-                in Translation stationTrans) =>
-            {
-                if (math.distancesq(playerPos, stationTrans.Value) < station.Range * station.Range)
+                bool isDockable = false;
+                for (int i = 0; i < stationPosArray.Length; ++i)
                 {
-                    isInRange = true;
+                    var stationPos = stationPosArray[i].position;
+                    var stationRange = stationPosArray[i].range;
+                    if (math.distancesq(playerPos, stationPos) < stationRange * stationRange)
+                    {
+                        isDockable = true;
+                        break;
+                    }
                 }
-            }).Run();
 
-            return isInRange;
+                if ( docking.dockable != isDockable )
+                {
+                    docking.dockable = isDockable;
+                    ecb.AddComponent<DockingChanged>(entityInQueryIndex, entity);
+                }
+            })
+            .WithDeallocateOnJobCompletion(stationPosArray)
+            .Schedule();
+
+            _ecb.AddJobHandleForProducer(this.Dependency);
         }
     }
 }

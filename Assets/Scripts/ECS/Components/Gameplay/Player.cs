@@ -26,6 +26,14 @@ namespace INF.GamePlay
         public float3 linearVelocity;
     }
 
+    struct Docking : IComponentData
+    {
+        public bool dockable;
+    }
+    struct DockingChanged : IComponentData
+    {
+    }
+
     [InternalBufferCapacity(16)]
     public struct UnitAction : IBufferElementData
     {

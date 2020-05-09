@@ -15,6 +15,7 @@ namespace INF.Authoring
             dstManager.AddComponent(entity, ComponentType.ReadWrite<InputReceiver>());
             dstManager.AddComponentData(entity, new MoveAbility { linearSpeed = 1f });
             dstManager.AddComponentData(entity, new Movement { linearVelocity = float3.zero });
+            dstManager.AddComponentData(entity, new Docking { dockable = false });
             dstManager.AddBuffer<UnitAction>(entity);
         }
     }
