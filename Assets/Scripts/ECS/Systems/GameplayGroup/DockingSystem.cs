@@ -36,7 +36,7 @@ namespace INF.GamePlay
 
         private void SendInRangeChangedEvent()
         {
-            throw new NotImplementedException();
+            
         }
 
         private bool CheckInDockingRange()

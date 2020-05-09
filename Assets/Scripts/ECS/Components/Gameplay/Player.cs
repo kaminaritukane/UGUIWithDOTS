@@ -1,4 +1,5 @@
 ﻿using Unity.Entities;
+using Unity.Mathematics;
 
 namespace INF.GamePlay
 {
@@ -13,6 +14,16 @@ namespace INF.GamePlay
 
     struct InputReceiver : IComponentData
     {
+    }
+
+    struct MoveAbility : IComponentData
+    {
+        public float linearSpeed;
+    }
+
+    struct Movement : IComponentData
+    {
+        public float3 linearVelocity;
     }
 
     [InternalBufferCapacity(16)]

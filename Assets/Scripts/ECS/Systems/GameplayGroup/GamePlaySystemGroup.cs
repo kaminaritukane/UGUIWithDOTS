@@ -10,6 +10,7 @@ namespace INF.GamePlay
 
             AddSystemToUpdateList(World.CreateSystem<InputSystem>());
             AddSystemToUpdateList(World.CreateSystem<UnitActionSystem>());
+            AddSystemToUpdateList(World.CreateSystem<MovementSystem>());
             AddSystemToUpdateList(World.CreateSystem<DockingSystem>());
         }
     }

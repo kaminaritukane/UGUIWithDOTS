@@ -1,6 +1,6 @@
 ﻿using INF.GamePlay;
 using Unity.Entities;
-using Unity.Transforms;
+using Unity.Mathematics;
 using UnityEngine;
 
 namespace INF.Authoring
@@ -13,6 +13,8 @@ namespace INF.Authoring
             dstManager.AddComponent(entity, ComponentType.ReadOnly<Player>());
             dstManager.AddComponent(entity, ComponentType.ReadOnly<Authority>());
             dstManager.AddComponent(entity, ComponentType.ReadWrite<InputReceiver>());
+            dstManager.AddComponentData(entity, new MoveAbility { linearSpeed = 1f });
+            dstManager.AddComponentData(entity, new Movement { linearVelocity = float3.zero });
             dstManager.AddBuffer<UnitAction>(entity);
         }
     }
