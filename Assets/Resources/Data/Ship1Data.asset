@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shipName: Ship1
   description: The description of Ship1
+  shipImage: {fileID: 21300000, guid: b82eef55ca8dfe244b38a585f34843dd, type: 3}
   shipModel: {fileID: 2873620366382315321, guid: 4f2fd25447dc46f40bcfc530b3f4266b,
     type: 3}

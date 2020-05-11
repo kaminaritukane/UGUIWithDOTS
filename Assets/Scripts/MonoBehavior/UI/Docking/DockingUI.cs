@@ -7,11 +7,15 @@ namespace INF.UI
         [SerializeField] DockingButton _dockingButton = null;
         [SerializeField] DockingScreen _dockingScreen = null;
 
+        [SerializeField] ShipDataScriptableObject[] _shipDatas = null;
+
         private bool isInDockingScreen = false;
 
         private void Start()
         {
             _dockingButton.Close();
+
+            _dockingScreen.SetupShipList(_shipDatas);
             _dockingScreen.Close();
         }
 
