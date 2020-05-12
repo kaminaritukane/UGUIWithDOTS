@@ -6,8 +6,8 @@ using UnityEngine.UI;
 
 public class WindowTabsAutoManager : MonoBehaviour, IWindowInterface
 {
-    [SerializeField] private GameObject tabPrefab;
-    [SerializeField] private Transform tabList;
+    [SerializeField] private GameObject tabPrefab = default;
+    [SerializeField] private Transform tabList = default;
     private ToggleGroup toggleGroup;
 
     private Dictionary<GameObject, GameObject> windowTabDic = new Dictionary<GameObject, GameObject>();

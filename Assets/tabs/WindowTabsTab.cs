@@ -11,7 +11,7 @@ public class WindowTabEvent : UnityEvent<WindowTabsTab>
 
 public class WindowTabsTab : MonoBehaviour, IPointerClickHandler, ISelectHandler, IDeselectHandler
 {
-    [SerializeField] private Text tabNameText;
+    [SerializeField] private Text tabNameText = default;
     private Toggle toggle;
     public UnityEvent OnClickEvent;
     public WindowTabEvent OnSelectEvent = new WindowTabEvent();
@@ -29,13 +29,11 @@ public class WindowTabsTab : MonoBehaviour, IPointerClickHandler, ISelectHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        Debug.Log("Click");
         OnClickEvent?.Invoke();
     }
 
     public void OnSelect(BaseEventData eventData)
     {
-        Debug.Log("Select " + eventData.selectedObject.name);
         toggle.isOn = true;
         OnClickEvent?.Invoke();
         OnSelectEvent?.Invoke(this);
@@ -43,7 +41,6 @@ public class WindowTabsTab : MonoBehaviour, IPointerClickHandler, ISelectHandler
 
     public void OnDeselect(BaseEventData eventData)
     {
-        Debug.Log("Deselect " + eventData.selectedObject.name);
         OnDeselectEvent?.Invoke(this);
     }
 }

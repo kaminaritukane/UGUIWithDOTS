@@ -5,10 +5,10 @@ public class WindowsManager : MonoBehaviour, IWindowInterface
     public delegate void ShowWindowDelegate();
     public delegate void HideWindowDelegate();
 
-    public event ShowWindowDelegate ShowWindowEventHandler;
-    public event HideWindowDelegate HideWindowEventHandler;
+    public event ShowWindowDelegate ShowWindowEventHandler = default;
+    public event HideWindowDelegate HideWindowEventHandler = default;
 
-    [SerializeField] private GameObject window;
+    [SerializeField] private GameObject window = default;
     private Animator animator;
     [SerializeField] private float transitTime = 0.35f;
 

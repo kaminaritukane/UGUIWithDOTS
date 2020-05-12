@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class WindowTabsWindow : MonoBehaviour
 {
-    [SerializeField] private string windowName;
+    [SerializeField] private string windowName = default;
 
     public string WindowName
     {

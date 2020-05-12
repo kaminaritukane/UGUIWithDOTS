@@ -34,10 +34,10 @@ public class ButtonEvents : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     IPointerUpHandler, IPointerClickHandler, IDragHandler, IDropHandler, ISelectHandler, IDeselectHandler,
     IMoveHandler,IBeginDragHandler, IEndDragHandler, ISubmitHandler, ICancelHandler
 {
-    public event EventHandler OnButtonPressed;
-    public event EventHandler OnButtonClicked;
-    public event EventHandler OnEnterButton; //hover, show tips
-    public event EventHandler OnExitButton;
+    public event EventHandler OnButtonPressed = default;
+    public event EventHandler OnButtonClicked = default;
+    public event EventHandler OnEnterButton = default; //hover, show tips
+    public event EventHandler OnExitButton = default;
 
     //public UnityEvent OnButtonHold;
 
