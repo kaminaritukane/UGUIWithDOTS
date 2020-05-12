@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class WindowsManager : MonoBehaviour
+public class WindowsManager : MonoBehaviour, IWindowInterface
 {
     public delegate void ShowWindowDelegate();
     public delegate void HideWindowDelegate();

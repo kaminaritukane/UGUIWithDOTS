@@ -3,11 +3,16 @@ using UnityEngine.EventSystems;
 
 public class WindowsCloseButton : MonoBehaviour, IPointerClickHandler
 {
-    [SerializeField] private WindowsManager windowsManager;
+    [SerializeField] private IWindowInterface window;
+
+    private void Start()
+    {
+        window = GetComponentInParent<IWindowInterface>();
+    }
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        windowsManager.HideWindow();
+        window.HideWindow();
     }
 
 }
