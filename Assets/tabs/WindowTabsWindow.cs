@@ -4,15 +4,10 @@ using UnityEngine;
 
 public class WindowTabsWindow : MonoBehaviour
 {
-    private WindowTabsAutoManager manager;
+    [SerializeField] private string windowName;
 
-    private void Awake()
+    public string WindowName
     {
-        manager = GetComponentInParent<WindowTabsAutoManager>();
-    }
-
-    private void Start()
-    {
-        manager.AddWindow(gameObject);
+        get => windowName;
     }
 }

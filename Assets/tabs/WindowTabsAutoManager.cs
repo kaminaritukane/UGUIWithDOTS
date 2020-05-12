@@ -34,12 +34,13 @@ public class WindowTabsAutoManager : MonoBehaviour, IWindowInterface
     //    EventSystem.current.SetSelectedGameObject(windowTabDic.Keys.First());
     //}
 
-    public void AddWindow(GameObject window)
+    private void AddWindow(GameObject window)
     {
         GameObject tabObj = Instantiate(tabPrefab, tabList);
 
         tabObj.GetComponent<Toggle>().group = toggleGroup;
         var tab = tabObj.GetComponent<WindowTabsTab>();
+        tab.Init(window.GetComponent<WindowTabsWindow>().WindowName);
         tab.OnClickEvent.AddListener(() => OpenWindow(tabObj));
 
         windowTabDic.Add(tabObj, window);

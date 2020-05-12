@@ -236,6 +236,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1038890079}
     m_Modifications:
+    - target: {fileID: -343718235818215360, guid: 29dbc1e80301cbd4eafdc7e1f45a81b0,
+        type: 3}
+      propertyPath: windowName
+      value: GamePlay
+      objectReference: {fileID: 0}
     - target: {fileID: 3702172984205493595, guid: 29dbc1e80301cbd4eafdc7e1f45a81b0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -533,6 +538,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1038890079}
     m_Modifications:
+    - target: {fileID: -343718235818215360, guid: 29dbc1e80301cbd4eafdc7e1f45a81b0,
+        type: 3}
+      propertyPath: windowName
+      value: Setting
+      objectReference: {fileID: 0}
     - target: {fileID: 3702172984205493595, guid: 29dbc1e80301cbd4eafdc7e1f45a81b0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -785,6 +795,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1038890079}
     m_Modifications:
+    - target: {fileID: -343718235818215360, guid: 29dbc1e80301cbd4eafdc7e1f45a81b0,
+        type: 3}
+      propertyPath: windowName
+      value: Audio
+      objectReference: {fileID: 0}
     - target: {fileID: 3702172984205493595, guid: 29dbc1e80301cbd4eafdc7e1f45a81b0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1192,6 +1207,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1038890079}
     m_Modifications:
+    - target: {fileID: -343718235818215360, guid: 29dbc1e80301cbd4eafdc7e1f45a81b0,
+        type: 3}
+      propertyPath: windowName
+      value: Graphic
+      objectReference: {fileID: 0}
     - target: {fileID: 3702172984205493595, guid: 29dbc1e80301cbd4eafdc7e1f45a81b0,
         type: 3}
       propertyPath: m_LocalPosition.x

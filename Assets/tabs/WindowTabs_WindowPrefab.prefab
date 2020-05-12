@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3702172984205493595}
   - component: {fileID: 3702172984205493593}
   - component: {fileID: 3702172984205493594}
+  - component: {fileID: -343718235818215360}
   m_Layer: 5
   m_Name: WindowTabs_WindowPrefab
   m_TagString: Untagged
@@ -76,6 +77,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &-343718235818215360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3702172984205493596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: caf37d4d8a2211a4daf74c55aaa7d412, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  windowName: 
 --- !u!1 &5694999283662909724
 GameObject:
   m_ObjectHideFlags: 0

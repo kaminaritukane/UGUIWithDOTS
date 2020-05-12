@@ -11,10 +11,16 @@ public class WindowTabEvent : UnityEvent<WindowTabsTab>
 
 public class WindowTabsTab : MonoBehaviour, IPointerClickHandler, ISelectHandler, IDeselectHandler
 {
+    [SerializeField] private Text tabNameText;
     private Toggle toggle;
     public UnityEvent OnClickEvent;
     public WindowTabEvent OnSelectEvent = new WindowTabEvent();
     public WindowTabEvent OnDeselectEvent = new WindowTabEvent();
+
+    public void Init(string tabName)
+    {
+        tabNameText.text = tabName;
+    }
 
     private void Awake()
     {
